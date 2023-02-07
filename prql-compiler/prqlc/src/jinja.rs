@@ -91,7 +91,7 @@ fn find_span(source: &str, spans: Vec<Span>) -> &str {
     let end = spans.last().unwrap();
 
     let mut start_index = 0;
-    let mut end_index = 0;
+    let mut end_index = source.len();
 
     let mut line = 1;
     let mut col = 0;
@@ -161,7 +161,7 @@ mod test {
                     Span {
                         start_line: 7893648,
                         start_col: 79678,
-                        end_line: 2,
+                        end_line: 3,
                         end_col: 31,
                     }
                 ]
