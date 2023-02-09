@@ -15,7 +15,9 @@ metadata.msrv = "1.65.0"
 [dependencies]
 anyhow = {version = "1.0.57", features = ["backtrace"]}
 ariadne = "0.1.5"
-chumsky = "0.9.0"
+# We don't include the `spill-stack` feature, since it causes builds in GHA to
+# fail. If that no longer happens, we can re-enable it.
+chumsky = {version = "0.9.0", features = ["ahash", "std"]}
 csv = "1.1.6"
 enum-as-inner = "0.5.0"
 itertools = "0.10.3"
@@ -40,9 +42,9 @@ insta = {version = "1.26", features = ["colors", "glob", "yaml"]}
 # For integration tests
 [target.'cfg(not(target_family="wasm"))'.dev-dependencies]
 chrono = "0.4"
-pretty_assertions = "1.3.0"
 criterion = "0.4.0"
 postgres = "0.19.3"
+pretty_assertions = "1.3.0"
 rusqlite = {version = "0.28.0", features = ["bundled", "csvtab"]}
 
 # Re-enable on windows when duckdb supports it
