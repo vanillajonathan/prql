@@ -105,6 +105,11 @@ jobs:
 
             PRQL is a modern language for transforming data — a simple,
             powerful, pipelined SQL replacement.
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact-deb
+          path: ./*.deb
 
   build-rpm-package:
     # TODO: This doesn't publish the rpm yet, that would be a welcome follow-up (even as a CI artifact)
@@ -135,6 +140,13 @@ jobs:
             PRQL is a modern language for transforming data — a simple,
             powerful, pipelined SQL replacement.
           license: Apache-2.0
+      - name: Upload .rpm artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact-deb
+          path: |
+            ./*.rpm
+            !./*-debuginfo-*.rpm
 
   build-and-publish-snap:
     runs-on: ubuntu-latest
