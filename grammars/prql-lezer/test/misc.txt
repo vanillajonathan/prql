@@ -111,7 +111,17 @@ let my_func = arg1<int32> -> arg1
 
 ==>
 
+
 Query(VariableDeclaration(let,VariableName,Equals,Lambda(LambdaParam(TypeDefinition(TypeName)),Identifier)))
+
+# Import module
+
+mod foo
+# Hello
+
+==>
+
+Query(Import(mod,VariableName),Comment)
 
 # Parameter
 
